@@ -1,2 +1,2 @@
-# Atlas Linux Docs
+# Home
 Welcome!
