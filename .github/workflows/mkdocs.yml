@@ -2,8 +2,10 @@ name: Deploy MkDocs
 
 on:
   push:
-    branches:
-      - main    # or whatever your default branch is
+    branches: [main]
+
+permissions:
+  contents: write    # <— add this so GITHUB_TOKEN can push
 
 jobs:
   build-deploy:
@@ -11,14 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-      - name: Install MkDocs + theme
-        run: |
-          pip install mkdocs mkdocs-material
+      - run: pip install mkdocs mkdocs-material
 
       - name: Deploy to GitHub Pages
+        env:
+          # MkDocs/ghp_import will pick this up automatically
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mkdocs gh-deploy --force
