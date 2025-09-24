@@ -1,0 +1,7 @@
+site_name: Atlas Linux
+docs_dir: pages
+theme:
+  name: material  # optional, or mkdocs default
+nav:
+  - Home: index.md
+  - Guide: guide.md
