@@ -1,7 +1,12 @@
 site_name: Atlas Linux
 docs_dir: pages
+
 theme:
-  name: material  # optional, or mkdocs default
-nav:
-  - Home: index.md
-  - Guide: guide.md
+  name: material
+
+markdown_extensions:
+  - pymdownx.highlight:
+      linenums: true            # show line numbers
+      anchor_linenums: true     # line numbers are clickable
+      pygments_lang_class: true # needed for correct CSS classes
+  - pymdownx.superfences         # lets you use triple backticks with language specifiers
